@@ -12,13 +12,14 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-import axios from "axios";
+
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { useNavigate } from 'react-router-dom';
 import { clearErrors,createOrder } from "../../redux/reducers/orderReducer";
+import axios from "../../redux/base_URL";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -59,7 +60,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `/api/v1/payment/process`,
         paymentData,
         config
       );

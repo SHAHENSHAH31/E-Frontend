@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+
+import axios from "../base_URL";
 
 // Login
 export const login=createAsyncThunk("Users/login",async(arg,{rejectWithValue})=>{

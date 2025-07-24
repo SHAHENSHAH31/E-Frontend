@@ -1,6 +1,6 @@
-import axios from "axios";
-import { addToCart,removeCartItem,saveShippingInfo } from "../reducers/cartReducer";
 
+import { addToCart,removeCartItem,saveShippingInfo } from "../reducers/cartReducer";
+import axios from "../base_URL";
 // Add to Cart
 export const addItemsToCart = (id, quantity) => async (dispatch,getState) => {
   const { data } = await axios.get(`/api/v1/product/${id}`);

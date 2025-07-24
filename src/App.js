@@ -23,7 +23,7 @@ import ResetPassword from "./component/User/ResetPassword.js";
 import Cart from "./component/Cart/Cart.js";
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
-import axios from "axios";
+
 //import Payment from "./component/Cart/Payment.js";
 //import { Elements } from "@stripe/react-stripe-js";
 //import { loadStripe } from "@stripe/stripe-js";
@@ -40,6 +40,7 @@ import ProcessOrder from "./component/Admin/ProcessOrder.js";
 import UsersList from "./component/Admin/UsersList.js";
 import UpdateUser from "./component/Admin/UpdateUser.js";
 import ProductReviews from "./component/Admin/ProductReviews.js";
+import axios from './redux/base_URL.js';
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.userReducerLogin);
@@ -47,7 +48,7 @@ function App() {
 
   async function getStripeApiKey() {
     try{
-      const { data } = await axios.get("/api/v1/stripeapikey");
+      const { data } = await axios.get(`/api/v1/stripeapikey`);
       setStripeApiKey(data.stripeApiKey);
    console.log(data.stripeApiKey);
 

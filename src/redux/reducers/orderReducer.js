@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import axios from "axios";
+
+import  axios  from "../base_URL";
 
 export const createOrder =  createAsyncThunk("create",async(order,{rejectWithValue})=> {
     try {
@@ -8,7 +9,7 @@ export const createOrder =  createAsyncThunk("create",async(order,{rejectWithVal
               "Content-Type": "application/json",
             },
           };
-          const data  = await axios.post("/api/v1/order/new", order, config);
+          const data  = await axios.post(`/api/v1/order/new`, order, config);
       return data
   
     } catch (error) {
@@ -61,7 +62,8 @@ export const { clearErrors } = newOrderReducer.actions;
 export const myOrders =  createAsyncThunk("order",async(arg,{rejectWithValue})=> {
     try {
       
-          const data  = await axios.get("/api/v1/orders/me");
+          const data  = await axios.get(`/api/v1/orders/me`);
+
       return data
   
     } catch (error) {
@@ -109,7 +111,7 @@ export const myOrderReducer=createSlice({
 export const getAllOrders =  createAsyncThunk("orders",async(arg,{rejectWithValue})=> {
   try {
     
-        const data  = await axios.get("/api/v1/admin/orders");
+        const data  = await axios.get(`/api/v1/admin/orders`);
     return data
 
   } catch (error) {
